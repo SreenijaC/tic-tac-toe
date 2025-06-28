@@ -1,31 +1,78 @@
-# Tic-Tac-Toe (Java)
 
-You can find the instructions for this lab [here](https://morethanequations.com/Computer-Science/Portfolio-Projects/Tic-Tac-Toe). Create a new repository on GitHub to house your code. Be sure to make the repository public so that I can view and grade it.
+---
 
-We will use [Gradle](https://gradle.org/) to automate common development tasks.
+# Tic-Tac-Toe (Java) — Portfolio 1: Human vs. Human Game
 
-## Building the App
+This repository contains the implementation of a **Human vs. Human Tic-Tac-Toe** game for **CSC-214 Portfolio 1**.
 
-You can build the app using:
+You can find the instructions for this portfolio project [here](https://morethanequations.com/Computer-Science/Portfolio-Projects/Tic-Tac-Toe).
+
+---
+
+## Overview
+
+This version of the Tic-Tac-Toe game supports:
+
+* 3x3 game board
+* Two human players: Player X and Player O
+* Turn-based gameplay via console
+* Input validation for invalid moves and replay prompts
+* Clear console output showing the current board after each move
+* End-game detection (win or draw)
+* Option to play again
+
+---
+
+## Project Structure
+
+This app consists of multiple modular classes:
+
+* `App` – the main entry point
+* `Game` – handles game logic and flow
+* `Board` – represents and manages the 3x3 board
+* `Player` – represents player information (symbol only)
+* `UserInput` – manages and validates console input
+
+---
+
+## Build Instructions
+
+We use [Gradle](https://gradle.org/) to automate common development tasks.
+
+### 🔧 Building the App
 
 ```bash
 ./gradlew build
 ```
 
+---
+
 ## Testing the App
 
-You can run the automated suite of tests using:
+This project includes unit tests for each class using JUnit 5.
+You can run the automated test suite with:
 
 ```bash
 ./gradlew test
 ```
 
+Test coverage includes:
+
+* Game flow (win/draw)
+* Board state handling
+* Input validation
+* Player object rules
+
+---
+
 ## Running the App
 
-You can run the app using:
+To run the game from the terminal:
 
 ```bash
 ./gradlew run --quiet --console=plain
 ```
 
-The two flags passed to the `run` command hide the noisy output from Gradle. You can see the details from Gradle by omitting those flags.
+The flags above suppress Gradle’s extra logs so only the game console output is shown. The flags can be removed for full Gradle logs while debugging.
+
+---
