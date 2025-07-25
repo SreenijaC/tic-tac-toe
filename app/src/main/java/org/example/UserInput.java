@@ -35,7 +35,7 @@ public class UserInput {
         while (true) {
             System.out.println();
             System.out.print("Would you like to play again (yes/no)? ");
-            String input = scanner.nextLine().trim().toLowerCase(); // clean input
+            String input = scanner.nextLine().trim().toLowerCase(); // cleans input
             System.out.println();
 
             if (input.equals("yes"))
@@ -44,12 +44,11 @@ public class UserInput {
                 return false;
 
             System.out.println();
-            System.out.println("That is not a valid move! Try again."); // retry
+            System.out.println("That is not a valid move! Try again."); // retry again
         }
     }
 
-    // added to let game class access scanner for full-line input (like mode
-    // selection)
+    // to read user input for game class
     public Scanner getScanner() {
         return scanner;
     }
