@@ -12,21 +12,22 @@ public class UserInput {
     public int getValidMove(Board board, String playerSymbol) {
         while (true) {
             System.out.print("What is your move? ");
-            String input = scanner.nextLine().trim(); //remove leading/trailing spaces
+            String input = scanner.nextLine().trim(); // remove leading/trailing spaces
             System.out.println();
 
             try {
-                int move = Integer.parseInt(input); //to convert input to num
-                //check if move is btw 1-9 and cell isn't taken
+                int move = Integer.parseInt(input); // to convert input to num
+                // check if move is btw 1-9 and cell isn't taken
                 if (move >= 1 && move <= 9 && board.isCellAvailable(move)) {
                     return move;
+                } else if (move >= 1 && move <= 9) {
+                    System.out.println("That cell is already taken. Try again.");
+                } else {
+                    System.out.println("That is not a valid move! Try again.");
                 }
             } catch (NumberFormatException ignored) {
-                //input wasn't num, so do nothing and continue loop
+                System.out.println("That is not a valid move! Try again.");
             }
-
-            System.out.println();
-            System.out.println("That is not a valid move! Try again."); //retry
         }
     }
 
@@ -43,7 +44,13 @@ public class UserInput {
                 return false;
 
             System.out.println();
-            System.out.println("That is not a valid entry!"); //handle anything other than yes/no
+            System.out.println("That is not a valid move! Try again."); // retry
         }
+    }
+
+    // added to let game class access scanner for full-line input (like mode
+    // selection)
+    public Scanner getScanner() {
+        return scanner;
     }
 }

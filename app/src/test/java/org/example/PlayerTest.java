@@ -20,4 +20,3 @@ public class PlayerTest {
         assertThrows(IllegalArgumentException.class, () -> new Player(null));
     }
 }
- 

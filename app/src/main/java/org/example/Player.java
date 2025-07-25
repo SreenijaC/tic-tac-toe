@@ -1,13 +1,14 @@
 package org.example;
 
 public class Player {
-    private final String symbol; // player symbol: "X" or "O"
+    private final String symbol; // player symbol x or o
 
     public Player(String symbol) {
-        if (symbol == null || (!symbol.equals("X") && !symbol.equals("O"))) {
-            throw new IllegalArgumentException("Player symbol must be 'X' or 'O'");
+        // to make sure symbol is x or o, else throw error
+        if (symbol == null || (!symbol.equalsIgnoreCase("x") && !symbol.equalsIgnoreCase("o"))) {
+            throw new IllegalArgumentException("player symbol must be 'x' or 'o'");
         }
-        this.symbol = symbol;
+        this.symbol = symbol.toUpperCase(); 
     }
 
     public String getSymbol() {

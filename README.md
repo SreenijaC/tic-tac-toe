@@ -32,7 +32,7 @@ This app consists of multiple modular classes:
 * `Board` – represents and manages the 3x3 board
 * `Player` – represents player information (symbol only)
 * `UserInput` – manages and validates console input
-
+* `Computer Player` - implements computer-controlled player logic
 ---
 
 ## Build Instructions

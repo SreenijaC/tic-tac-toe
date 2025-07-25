@@ -70,4 +70,17 @@ public class UserInputTest {
         UserInput userInput = new UserInput();
         assertTrue(userInput.askPlayAgain());
     }
+
+    @Test
+    void testGetValidMove_takenThenValid() {
+        String simulatedInput = "5\n2\n";
+        System.setIn(new ByteArrayInputStream(simulatedInput.getBytes()));
+        UserInput userInput = new UserInput();
+        Board board = new Board();
+        board.makeMove(5, "X"); // occupy cell 5
+
+        int move = userInput.getValidMove(board, "O");
+        assertEquals(2, move);
+    }
+
 }

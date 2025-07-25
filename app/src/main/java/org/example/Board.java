@@ -40,31 +40,41 @@ public class Board {
             return false;
         }
 
-        String valueInCell = cells[cellIndex];
+        String val = cells[cellIndex];
         // checking if cell is not taken by either player.
-        return !valueInCell.equals("X") && !valueInCell.equals("O");
+        return !val.equals("X") && !val.equals("O");
     }
 
-    // to place symbol in cell return true if successful
+    // to place symbol in cell return true if successful.
     public boolean makeMove(int cellNumber, String symbol) {
-        int cellIndex = cellNumber - 1;
+        int cellIndex = cellNumber - 1; // convert to 0-based index
 
         if (cellIndex < 0 || cellIndex >= cells.length) {
-            return false;
+            return false; // invalid cell number
         }
 
-        if (!isCellAvailable(cellNumber)) {
-            return false;
+        // check if cell is available
+        if (!cells[cellIndex].equals("X") && !cells[cellIndex].equals("O")) {
+            cells[cellIndex] = symbol.toUpperCase(); // use uppercase symbol
+            return true;
         }
 
-        cells[cellIndex] = symbol; // the symbol placed in that cell
-        return true;
+        return false; // symbol placed in that cell or invalid
+
+    }
+
+    // helper method for temporary move simulation for computer player
+    public void setCell(int cellNumber, String value) {
+        int cellIndex = cellNumber - 1;
+        if (cellIndex >= 0 && cellIndex < cells.length) {
+            cells[cellIndex] = value;
+        }
     }
 
     // check if any winning combination is achieved
     public boolean hasWinner() {
         for (int[] winningCombination : WIN_COMBINATIONS) {
-            String first = cells[winningCombination[0]]; // symbol at first cell of this winning combo
+            String first = cells[winningCombination[0]]; // symbol at 1st cell of this winning combo
             String second = cells[winningCombination[1]];
             String third = cells[winningCombination[2]];
 
@@ -81,14 +91,13 @@ public class Board {
 
     // to check if board is complete i.e no more valid moves
     public boolean isFull() {
-    for (String cell : cells) {
-        if (!cell.equals("X") && !cell.equals("O")) {
-            return false;  // found an empty cell, so board is not full
+        for (String cell : cells) {
+            if (!cell.equals("X") && !cell.equals("O")) {
+                return false; // found an empty cell, so board is not full
+            }
         }
+        return true; // all cells are filled
     }
-    return true;  // all cells are filled
-}
-
 
     // determining game is over
     public boolean isGameOver() {
